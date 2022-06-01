@@ -1,2 +1,2 @@
 #!/bin/bash
-rintf %x'\n' $DECIMAL
+printf %x'\n' $DECIMAL
