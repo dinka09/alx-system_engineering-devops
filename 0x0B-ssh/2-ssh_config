@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Client configuration file 
+Host 100.25.131.175
+User ubuntu	
+HostName 51443-web-01
+StrictHostKeyChecking no
+IdentityFile school
