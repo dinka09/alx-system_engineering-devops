@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
-# Bash script containing commands to automatically configure a Ubuntu machine to
-# configure a Nginx server so that /redirect_me is redirecting to another page
-# Also adds custom 404 page
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-echo "Hello World" | sudo tee /var/www/html/index.nginx-debian.html
-echo -e "Ceci n'est pas une page\n" | sudo tee /usr/share/nginx/html/custom_404.html
-sudo sed -i "/listen \[\:\:\]\:80 default_server;/a rewrite ^/redirect_me https://www.youtube.com permanent;\n\n error_page 404 /custom_404.html;\nlocation = /custom_404.html { root /usr/share/nginx/html; internal; }\n\n" /etc/nginx/sites-available/default
-sudo service nginx startclea
+# Script that installs Nginx server, redirects /redirect_me and customizes 404 not found
+apt-get -y update
+apt-get -y install nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
+sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/luischaparroc permanent;\n\n\terror_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
+service nginx start
