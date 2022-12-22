@@ -53,5 +53,5 @@ Host *
     HashKnownHosts yes
     GSSAPIAuthentication yes
     GSSAPIDelegateCredentials no
-    IdentityFile ~/.ssh/holberton
+    IdentityFile ~/.ssh/id_rsa
     PasswordAuthentication no
